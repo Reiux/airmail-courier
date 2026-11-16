@@ -1,20 +1,3 @@
-/**
- * Airmail Courier — Interactive Engine
- * Ghibli-inspired E-Card for Prof. Rose Anne G. Cochanco (Ma'am Roan)
- * Dispatched by: Prinz Charles M. Paderes (ITWS02)
- *
- * Features:
- * 1. Zero-dependency Web Audio API synthesizer (whoosh, pop, snap, rustle, harp chime, music box)
- * 2. Autoplay Ghibli lullaby music box with browser gesture fallback
- * 3. Viewport-safe runaway wax seal dodging (DOM reparented to bypass CSS perspective containing block)
- * 4. Safe multi-transport XOR decryption (works 100% offline via file:// and http://)
- * 5. 3D Envelope opening & smooth letter unfolding
- * 6. Dynamic config support from update_message.py
- */
-
-// =========================================================
-// 1. CONFIG LOADER (From data/message.js / update_message.py)
-// =========================================================
 function applyPostalConfig() {
   const config = window.POSTAL_CONFIG || {};
 
@@ -36,9 +19,6 @@ function applyPostalConfig() {
   }
 }
 
-// =========================================================
-// 2. WEB AUDIO API SYNTHESIZER (100% Offline & Autoplay Support)
-// =========================================================
 let audioCtx = null;
 let musicBoxInterval = null;
 let isMusicPlaying = false;
@@ -53,7 +33,6 @@ function getAudioContext() {
   return audioCtx;
 }
 
-// Whoosh sound for seal jump
 function playWhooshSound() {
   try {
     const ctx = getAudioContext();
@@ -71,7 +50,6 @@ function playWhooshSound() {
   } catch(e) {}
 }
 
-// Squeak / pop sound for soot sprites
 function playPopSound() {
   try {
     const ctx = getAudioContext();
@@ -89,7 +67,6 @@ function playPopSound() {
   } catch(e) {}
 }
 
-// Wax seal cracking sound
 function playWaxCrackSound() {
   try {
     const ctx = getAudioContext();
@@ -107,7 +84,6 @@ function playWaxCrackSound() {
   } catch(e) {}
 }
 
-// Paper rustle sound
 function playPaperRustle() {
   try {
     const ctx = getAudioContext();
@@ -133,7 +109,6 @@ function playPaperRustle() {
   } catch(e) {}
 }
 
-// Whimsical harp victory chime
 function playHarpChime() {
   try {
     const ctx = getAudioContext();
@@ -153,7 +128,6 @@ function playHarpChime() {
   } catch(e) {}
 }
 
-// Ghibli music box melody notes
 const musicBoxNotes = [
   523.25, 659.25, 783.99, 659.25, 880.00, 783.99, 659.25, 587.33,
   523.25, 440.00, 523.25, 659.25, 587.33, 523.25, 493.88, 523.25
@@ -241,9 +215,6 @@ function initAutoPlayMusic() {
   } catch(e) {}
 }
 
-// =========================================================
-// 3. EVASIVE WAX SEAL (VIEWPORT-SAFE CONTAINMENT FIX)
-// =========================================================
 let evasionCount = 0;
 const MAX_EVASIONS = 5;
 let isSealLocked = false;
@@ -276,9 +247,9 @@ function dodgeButton(e) {
   const lines = getDodgeLines();
 
   if (evasionCount <= MAX_EVASIONS) {
-    // CRITICAL FIX: Reparent button to document.body while in flight
-    // This removes it from .envelope-stage (which has CSS perspective: 1200px),
-    // ensuring position: fixed is genuinely and accurately calculated relative to the window viewport!
+    
+    
+    
     if (runawayBtn.parentElement !== document.body) {
       document.body.appendChild(runawayBtn);
     }
@@ -286,7 +257,7 @@ function dodgeButton(e) {
     const btnWidth = runawayBtn.offsetWidth || 76;
     const btnHeight = runawayBtn.offsetHeight || 76;
 
-    // Viewport-safe bounds (optimized for both mobile and desktop):
+    
     const isMobile = window.innerWidth < 640;
     const marginX = isMobile ? 24 : Math.max(70, Math.floor(window.innerWidth * 0.08));
     const marginTop = 95;
@@ -303,7 +274,7 @@ function dodgeButton(e) {
     runawayBtn.style.top = `${newTop}px`;
     runawayBtn.style.zIndex = '9999';
 
-    // Update speech bubble in the center of the envelope with banter and count
+    
     const banter = lines[evasionCount - 1] || fallbackBanter[evasionCount - 1];
     dialogText.textContent = isMobile ? `${banter} (${evasionCount}/5)` : banter;
     dialogBubble.classList.add('scale-105');
@@ -317,7 +288,7 @@ function dodgeButton(e) {
 function lockButton() {
   isSealLocked = true;
   
-  // Return button back to its home slot inside the envelope
+  
   if (sealHomeSlot && runawayBtn.parentElement !== sealHomeSlot) {
     sealHomeSlot.appendChild(runawayBtn);
   }
@@ -328,7 +299,7 @@ function lockButton() {
   runawayBtn.style.zIndex = '50';
   runawayBtn.classList.add('locked');
 
-  // Change seal icon to open lock
+  
   runawayBtn.innerHTML = `
     <i class="fa-solid fa-lock-open text-2xl text-white mb-0.5 pointer-events-none"></i>
     <span class="text-[9px] font-mono font-bold tracking-wider text-white uppercase pointer-events-none">OPEN</span>
@@ -340,10 +311,8 @@ function lockButton() {
 
 let touchHoldTimer = null;
 
-// Desktop hover listener
 runawayBtn.addEventListener('mouseenter', dodgeButton);
 
-// Mobile touch listener: taps trigger playful dodge with haptics; holding for 900ms unlocks directly
 runawayBtn.addEventListener('touchstart', (e) => {
   if (isSealLocked) return;
   e.preventDefault();
@@ -378,9 +347,6 @@ runawayBtn.addEventListener('click', () => {
   openPinModal();
 });
 
-// =========================================================
-// 4. PIN MODAL & SAFE MULTI-TRANSPORT DECRYPTION
-// =========================================================
 const pinModal = document.getElementById('pinModal');
 const pinInput = document.getElementById('pinInput');
 const pinError = document.getElementById('pinError');
@@ -403,7 +369,6 @@ function closePinModal() {
 
 cancelPinBtn.addEventListener('click', closePinModal);
 
-// Close on Escape key
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && !pinModal.classList.contains('hidden')) {
     closePinModal();
@@ -417,11 +382,11 @@ togglePinVis.addEventListener('click', () => {
 });
 
 async function getEncryptedCipher() {
-  // Transport 1: Direct in-memory global payload (Zero-CORS on file://)
+  
   if (window.ENCRYPTED_MESSAGE_PAYLOAD && window.ENCRYPTED_MESSAGE_PAYLOAD.cipher) {
     return window.ENCRYPTED_MESSAGE_PAYLOAD.cipher;
   }
-  // Transport 2: HTTP fetch fallback
+  
   try {
     const res = await fetch('data/message.json');
     if (res.ok) {
@@ -482,16 +447,13 @@ pinInput.addEventListener('keydown', (e) => {
   }
 });
 
-// =========================================================
-// 5. 3D ENVELOPE OPENING & LETTER UNBOXING SEQUENCE
-// =========================================================
 function executeUnboxingSequence(data) {
-  // 1. Procedural sound effects
+  
   playWaxCrackSound();
   setTimeout(playPaperRustle, 250);
   setTimeout(playHarpChime, 600);
 
-  // 2. Confetti shower in warm Ghibli palette
+  
   if (window.confetti) {
     confetti({
       particleCount: 75,
@@ -517,11 +479,11 @@ function executeUnboxingSequence(data) {
     }, 350);
   }
 
-  // 3. Open 3D Envelope
+  
   const envelope = document.getElementById('ghibliEnvelope');
   envelope.classList.add('is-open');
 
-  // 4. Populate decrypted letter data
+  
   document.getElementById('decryptedGreeting').textContent = data.greeting;
   
   const paragraphsContainer = document.getElementById('decryptedParagraphs');
@@ -546,22 +508,20 @@ function executeUnboxingSequence(data) {
     document.getElementById('decryptedSignoffRole').textContent = data.signoff.role || 'Student, ITWS02';
   }
 
-  // 5. Reveal letter card with smooth animation
+  
   const letterCard = document.getElementById('letterCard');
   letterCard.classList.remove('hidden');
   letterCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  // 6. Update dialog bubble with customizable success message
+  
   const config = window.POSTAL_CONFIG || {};
   dialogText.textContent = data.successMessage || config.successMessage || "Parcel successfully opened! Maraming salamat po Ma'am Roan! 🌸";
 }
 
-// Print Keepsake
 document.getElementById('printBtn').addEventListener('click', () => {
   window.print();
 });
 
-// Fold back to envelope
 document.getElementById('refoldBtn').addEventListener('click', () => {
   playPaperRustle();
   const envelope = document.getElementById('ghibliEnvelope');
@@ -574,9 +534,6 @@ document.getElementById('refoldBtn').addEventListener('click', () => {
   dialogText.textContent = config.refoldMessage || "Closed! Pwede nyo po uli sya buksan anytime!";
 });
 
-// =========================================================
-// 6. SOOT SPRITES & MUSIC BOX INTERACTIONS
-// =========================================================
 const sprite1 = document.getElementById('sootSprite1');
 const sprite2 = document.getElementById('sootSprite2');
 
@@ -589,12 +546,8 @@ function triggerSpriteAnimation(sprite) {
 if (sprite1) sprite1.addEventListener('click', () => triggerSpriteAnimation(sprite1));
 if (sprite2) sprite2.addEventListener('click', () => triggerSpriteAnimation(sprite2));
 
-// Music button toggle
 document.getElementById('audioBtn').addEventListener('click', toggleMusicBox);
 
-// =========================================================
-// 7. SUBTLE GENTLE FALLING LEAVES (Ghibli Ambiance)
-// =========================================================
 function createGentleLeaves() {
   const leafCount = 6;
   const leafSymbols = ['🍃', '🍂', '🌿'];
@@ -610,9 +563,6 @@ function createGentleLeaves() {
   }
 }
 
-// =========================================================
-// 8. INITIALIZE ON DOM READY
-// =========================================================
 window.addEventListener('DOMContentLoaded', () => {
   applyPostalConfig();
   createGentleLeaves();

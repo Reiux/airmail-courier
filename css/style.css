@@ -1,9 +1,3 @@
-/* =========================================================
-   Airmail Courier — Ghibli Aesthetic E-Card
-   Express Delivery for Prof. Rose Anne G. Cochanco (Ma'am Roan)
-   From: Prinz Charles M. Paderes (ITWS02)
-   ========================================================= */
-
 :root {
   --bg-canvas: #FAF6ED;
   --bg-parchment: #FDFBF7;
@@ -22,7 +16,6 @@
   --amber-light: #FBF4E8;
 }
 
-/* Global Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -42,14 +35,6 @@ body {
   overflow-x: hidden;
 }
 
-/* =========================================================
-   Explicit Typography Scale (Ratio > 1.25x between steps)
-   h1: 40px (2.5rem)
-   h2: 28px (1.75rem)
-   h3: 21.6px (1.35rem)
-   body/p: 16px (1rem)
-   small: 12.8px (0.8rem)
-   ========================================================= */
 h1 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.5rem;
@@ -100,14 +85,12 @@ p {
   font-family: 'Space Mono', monospace;
 }
 
-/* Organic hand-crafted parchment borders */
 .parchment-border {
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   border: 1.5px solid rgba(140, 115, 85, 0.22);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
-/* Top Airmail Trim Border (Crisp dual-tone styling, no repeating stripes) */
 .airmail-trim {
   height: 6px;
   width: 100%;
@@ -116,15 +99,12 @@ p {
   border-bottom: 2px solid #3E5B70;
 }
 
-/* =========================================================
-   Postage Stamps (Perforated Craft)
-   ========================================================= */
 .stamp-wrapper {
   outline: none;
   padding: 8px 10px;
   position: relative;
   border: 1px dashed rgba(160, 130, 95, 0.45);
-  /* no shadow */
+  
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -137,7 +117,6 @@ p {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
-/* Postal Cancellation Mark */
 .postal-cancellation {
   border: 2px solid rgba(163, 51, 51, 0.7);
   border-radius: 50%;
@@ -162,9 +141,6 @@ p {
   border-radius: 50%;
 }
 
-/* =========================================================
-   Interactive 3D Envelope
-   ========================================================= */
 .envelope-stage {
   perspective: 1200px;
   position: relative;
@@ -183,7 +159,6 @@ p {
   transition: transform 0.6s ease;
 }
 
-/* Top Foldable Triangular Flap */
 .envelope-flap {
   position: absolute;
   top: 0;
@@ -203,17 +178,12 @@ p {
   z-index: 1;
 }
 
-/* Front Pocket Body */
 .envelope-pocket {
   position: relative;
   z-index: 5;
   padding: 36px 32px 32px 32px;
 }
 
-/* =========================================================
-   Crimson Wax Seal (The Runaway Button)
-   High contrast: Pure white icons and text on deep red
-   ========================================================= */
 button.wax-seal-btn, #runawayBtn {
   background: radial-gradient(circle at 35% 30%, #C84646 0%, #9E2A2B 55%, #661818 100%);
   border: 3px solid #FDFBF7;
@@ -251,7 +221,6 @@ button.wax-seal-btn:active, #runawayBtn:active {
   transform: scale(0.95);
 }
 
-/* When the seal locks and is ready to click */
 button.wax-seal-btn.locked, #runawayBtn.locked {
   background: radial-gradient(circle at 35% 30%, #34D399 0%, #059669 65%, #064E3B 100%);
   box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.25), 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -263,9 +232,6 @@ button.wax-seal-btn.locked, #runawayBtn.locked {
   50% { transform: scale(1.04); }
 }
 
-/* =========================================================
-   Letter Inside & Unfolding
-   ========================================================= */
 .letter-stationery {
   background-color: var(--bg-parchment);
   background-image: 
@@ -277,14 +243,10 @@ button.wax-seal-btn.locked, #runawayBtn.locked {
   padding: 40px 36px;
 }
 
-/* Modal Inset Padding */
 .modal-parchment {
   padding: 36px 32px;
 }
 
-/* =========================================================
-   Soot Sprites (Susuwatari)
-   ========================================================= */
 .soot-sprite {
   width: 38px;
   height: 38px;
@@ -340,9 +302,6 @@ button.wax-seal-btn.locked, #runawayBtn.locked {
   100% { transform: scale(1) rotate(0deg); }
 }
 
-/* =========================================================
-   Floating Delivery Leaf Particles
-   ========================================================= */
 .falling-leaf {
   position: fixed;
   top: -20px;
@@ -369,7 +328,6 @@ button.wax-seal-btn.locked, #runawayBtn.locked {
   }
 }
 
-/* Blockquote in letter */
 .letter-stationery blockquote {
   padding: 1.25rem 1.5rem !important;
   border-left: 4px solid #C2873E;
@@ -377,9 +335,6 @@ button.wax-seal-btn.locked, #runawayBtn.locked {
   border-radius: 0 8px 8px 0;
 }
 
-/* =========================================================
-   Print Stylesheet (Prints ONLY the clean keepsake letter)
-   ========================================================= */
 @media print {
   @page {
     margin: 1.5cm;
@@ -397,7 +352,7 @@ button.wax-seal-btn.locked, #runawayBtn.locked {
     overflow: visible !important;
   }
 
-  /* Completely hide all interactive UI, leaves, stages, and badges */
+  
   header, 
   footer, 
   .airmail-trim, 

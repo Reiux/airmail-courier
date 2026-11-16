@@ -5,19 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Airmail Courier — Special Delivery for Ma'am Roan</title>
   
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Canvas Confetti -->
+  
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-  <!-- FontAwesome Icons for UI -->
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Google Fonts: Playfair Display, Quicksand, Caveat, Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   
-  <!-- External Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
   <script>
@@ -53,16 +50,11 @@
 </head>
 <body class="min-h-screen text-[#2C2621] antialiased pb-20 relative selection:bg-[#E8F0EC] selection:text-[#4D6B5A]">
 
-  <!-- Top Airmail Trim Border (Crisp dual-tone styling) -->
   <div class="airmail-trim"></div>
 
-  <!-- ========================================================= -->
-  <!-- 1. POSTAL HEADER & ATMOSPHERE -->
-  <!-- ========================================================= -->
   <header class="w-full bg-[#FAF6ED]/95 backdrop-blur-md border-b border-[#E0D7C5] sticky top-0 z-30">
     <div class="max-w-5xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-3">
       
-      <!-- Postal Crest -->
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-full bg-[#4D6B5A] text-white flex items-center justify-center text-base shadow-xs">
           <i class="fa-solid fa-feather-pointed"></i>
@@ -77,7 +69,6 @@
         </div>
       </div>
 
-      <!-- Music box toggle -->
       <div class="flex items-center gap-3 text-xs">
         <button id="audioBtn" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E8F0EC] text-[#4D6B5A] font-semibold border border-[#C5D8CD] transition-colors shadow-xs" title="Play or pause Ghibli music box">
           <i class="fa-solid fa-music"></i> <span id="audioBtnText">Pause Music</span>
@@ -87,12 +78,8 @@
     </div>
   </header>
 
-  <!-- ========================================================= -->
-  <!-- 2. MAIN POSTAL DESK STAGE -->
-  <!-- ========================================================= -->
   <main class="max-w-4xl mx-auto px-6 pt-10 pb-16">
 
-    <!-- Page Title & Delivery Greeting (Pill badge cleanly removed) -->
     <div class="text-center mb-10">
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-serifGhibli font-bold text-[#2C2621] tracking-tight leading-tight mb-3">
         A Special Delivery for Ma'am Roan
@@ -102,47 +89,35 @@
       </p>
     </div>
 
-    <!-- The 3D Envelope Container Stage -->
     <div class="envelope-stage">
 
-      <!-- ===================================================== -->
-      <!-- 3. PARCEL ENVELOPE (CLOSED STATE WITH POSTAL MARKS)   -->
-      <!-- ===================================================== -->
       <div id="ghibliEnvelope" class="ghibli-envelope">
         
-        <!-- Top Triangular Flap that flips open in 3D -->
         <div class="envelope-flap"></div>
 
-        <!-- Envelope Body & Front Pocket (Flattened layout, crisp stationery feel) -->
         <div class="envelope-pocket">
 
-          <!-- Upper Row: Stamps & Cancellation Mark -->
           <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
             
-            <!-- Left: Airmail Dispatch Badge -->
             <div class="flex items-center gap-2 text-xs font-mono text-[#5C544B] bg-[#F4EEDB] px-3 py-1.5 rounded-md border border-[#E0D4C0] select-none">
               <i class="fa-solid fa-paper-plane text-[#4D6B5A]"></i>
               <span>ITWS02-PARCEL-EXPRESS</span>
             </div>
 
-            <!-- Right: Stamp Cluster with Perforated Edges & Postmark -->
             <div class="flex items-center gap-3 select-none relative">
               
-              <!-- Postage Stamp 1: Jiji Silhouette / Cat -->
               <div class="stamp-wrapper rotate-[-2deg]">
                 <span class="text-[9px] font-mono font-bold text-[#A33333]">1.00 ⭐</span>
                 <i class="fa-solid fa-cat text-lg text-[#2C2621] my-1"></i>
                 <span class="text-[8px] font-mono text-[#766D63]">AIRMAIL</span>
               </div>
 
-              <!-- Postage Stamp 2: Steaming Coffee Mug -->
               <div class="stamp-wrapper rotate-[3deg]">
                 <span class="text-[9px] font-mono font-bold text-[#4D6B5A]">CAFFEINE</span>
                 <i class="fa-solid fa-mug-hot text-lg text-[#C2873E] my-1"></i>
                 <span class="text-[8px] font-mono text-[#766D63]">FACULTY</span>
               </div>
 
-              <!-- Postal Cancellation Ink Seal -->
               <div class="postal-cancellation absolute -right-2 -bottom-3">
                 <span class="text-[7px] font-mono font-bold text-[#A33333] tracking-wider uppercase">CONFIDENTIAL</span>
                 <span class="text-[9px] font-serifGhibli font-bold text-[#A33333]">MA'AM ROAN</span>
@@ -152,11 +127,9 @@
             </div>
           </div>
 
-          <!-- Middle: Direct Delivery Manifest Section (No nested card border) -->
           <div class="py-5 border-y border-[#D6C7AE] mb-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
               
-              <!-- Recipient Info -->
               <div class="space-y-1.5 md:border-r md:border-[#D6C7AE] md:pr-6">
                 <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#766D63] block">
                   Deliver To (Recipient)
@@ -170,7 +143,6 @@
                 </p>
               </div>
 
-              <!-- Sender & Parcel Specs -->
               <div class="space-y-1.5">
                 <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#766D63] block">
                   Dispatched By (Sender)
@@ -188,15 +160,12 @@
             </div>
           </div>
 
-          <!-- Bottom: Interactive Center Seal Area -->
           <div class="flex flex-col items-center justify-center pt-2 pb-2 relative min-h-[140px]">
             
-            <!-- Dialogue Speech Bubble (Follows or hovers near button) -->
             <div id="dialogBubble" class="transition-all duration-300 opacity-100 mb-3 bg-[#FAF0DE] border border-[#E7D0AB] text-[#2C2621] px-4 py-2 rounded-2xl shadow-xs text-xs sm:text-sm font-semibold max-w-sm text-center">
               <span id="dialogText">Click nyo po yung wax seal to open this envelope!</span>
             </div>
 
-            <!-- The Evasive Crimson Wax Seal Button Slot -->
             <div id="sealHomeSlot" class="relative flex items-center justify-center min-h-[80px]">
               <button id="runawayBtn" class="wax-seal-btn" title="Click to break seal and decrypt">
                 <i class="fa-solid fa-stamp text-2xl text-white mb-0.5 pointer-events-none"></i>
@@ -211,14 +180,10 @@
 
     </div>
 
-    <!-- ========================================================= -->
-    <!-- 4. UNBOXED LETTER STATIONERY (Decrypted State)            -->
-    <!-- ========================================================= -->
     <div id="letterCard" class="hidden mt-8 transition-all duration-700">
 
       <div class="letter-stationery parchment-border">
         
-        <!-- Letterhead & Greeting (Pill badge cleanly removed) -->
         <div class="border-b border-[#E7DBC4] pb-6 mb-6">
           <div class="flex flex-wrap justify-between items-center gap-4 mb-2">
             <span class="text-xs text-[#766D63] font-mono font-semibold">
@@ -231,12 +196,10 @@
           </h2>
         </div>
 
-        <!-- Decrypted Letter Body Paragraphs -->
         <div id="decryptedParagraphs" class="space-y-4 text-base sm:text-lg text-[#3A332B] leading-relaxed font-normal">
-          <!-- Populated dynamically via safe XOR decryption -->
+          
         </div>
 
-        <!-- Handcrafted Blockquote (Typographic divider, no nested card) -->
         <blockquote class="p-6 my-8 border-l-4 border-[#C2873E] bg-[#FAF4E8]/60 text-left">
           <p id="decryptedQuote" class="font-serifGhibli italic text-lg sm:text-xl text-[#2C2621] font-semibold mb-1">
             "A truly great professor makes debugging a little less painful and learning a whole lot more fun."
@@ -244,7 +207,6 @@
           <span id="decryptedQuoteDedication" class="text-xs font-mono text-[#766D63] block">— ITWS02 Dedication</span>
         </blockquote>
 
-        <!-- Letter Signoff -->
         <div class="border-t border-[#E7DBC4] pt-6 flex flex-wrap justify-between items-end gap-6">
           <div>
             <span id="decryptedSignoffLabel" class="text-sm text-[#766D63] block font-medium">
@@ -258,7 +220,6 @@
             </p>
           </div>
 
-          <!-- Postal Wax Mark of Completion -->
           <div class="flex items-center gap-3">
             <div class="text-right">
               <span class="text-xs font-mono font-bold text-[#4D6B5A] block">DELIVERY COMPLETE</span>
@@ -270,7 +231,6 @@
           </div>
         </div>
 
-        <!-- Action Bar: Print, Re-fold, and Rating -->
         <div class="mt-8 pt-6 border-t border-[#E7DBC4] flex flex-wrap gap-4 justify-between items-center no-print">
           <div class="flex items-center gap-2">
             <button id="printBtn" class="px-4 py-2 rounded-lg bg-[#FAF0DE] hover:bg-[#F3E2C4] text-[#2C2621] text-xs font-bold border border-[#E7D0AB] flex items-center gap-2 transition-colors">
@@ -281,7 +241,6 @@
             </button>
           </div>
 
-          <!-- Rating without bracket text -->
           <div class="text-xs text-[#766D63] flex items-center gap-1.5">
             <span>Rating:</span>
             <span id="ratingStars" class="text-amber-600 font-bold">⭐⭐⭐⭐⭐</span>
@@ -292,12 +251,8 @@
 
     </div>
 
-    <!-- ========================================================= -->
-    <!-- 5. INTERACTIVE SOOT SPRITES (SUSUWATARI)                  -->
-    <!-- ========================================================= -->
     <div class="mt-12 flex justify-between items-center px-4 select-none">
       
-      <!-- Left Soot Sprite -->
       <div class="flex items-center gap-3">
         <div id="sootSprite1" class="soot-sprite" title="Click me to play!">
           <span class="pupil-l"></span>
@@ -306,7 +261,6 @@
         <span class="text-xs font-hand text-[#766D63] text-base">psst... click us!</span>
       </div>
 
-      <!-- Right Soot Sprite with Coffee Bean -->
       <div class="flex items-center gap-3">
         <span class="text-xs font-hand text-[#766D63] text-base">faculty coffee keeper ☕</span>
         <div id="sootSprite2" class="soot-sprite" title="Click me to squeak!">
@@ -319,13 +273,9 @@
 
   </main>
 
-  <!-- ========================================================= -->
-  <!-- 6. PIN VERIFICATION TELEGRAM MODAL                        -->
-  <!-- ========================================================= -->
   <div id="pinModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4 hidden">
     <div class="bg-[#FAF6ED] max-w-md w-full modal-parchment rounded-2xl border-2 border-[#D4BE9F] shadow-xl relative parchment-border">
       
-      <!-- Modal Header (Confidential banner removed, title & desc editable) -->
       <div class="text-center mb-6">
         <div class="w-12 h-12 mx-auto rounded-full bg-[#FAF0DE] border-2 border-[#C2873E] text-[#C2873E] flex items-center justify-center text-xl mb-3 shadow-xs">
           <i class="fa-solid fa-key"></i>
@@ -338,7 +288,6 @@
         </p>
       </div>
 
-      <!-- PIN Input -->
       <div class="mb-6">
         <div class="relative">
           <input 
@@ -358,7 +307,6 @@
         </p>
       </div>
 
-      <!-- Modal Action Buttons in English -->
       <div class="flex items-center gap-3">
         <button id="cancelPinBtn" type="button" class="w-1/3 py-2.5 rounded-xl border border-[#CFC5B1] text-[#5C544B] hover:bg-[#EAE4D5] text-xs font-bold transition-colors">
           Cancel
@@ -371,9 +319,8 @@
     </div>
   </div>
 
-  <!-- Encrypted Payload & Config (window.POSTAL_CONFIG & window.ENCRYPTED_MESSAGE_PAYLOAD) -->
   <script src="data/message.js"></script>
-  <!-- Application Logic -->
+  
   <script src="js/app.js"></script>
 
 </body>
