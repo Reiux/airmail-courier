@@ -1,0 +1,13 @@
+# Excluded project documents and authoring tools
+PRODUCT.md
+product.md
+update_message.py
+.impeccable/
+__pycache__/
+*.pyc
+
+# Local drafts and temporary files
+*source*.json
+*.tmp
+*.bak
+.DS_Store

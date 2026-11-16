@@ -1,0 +1,450 @@
+/* =========================================================
+   Airmail Courier — Ghibli Aesthetic E-Card
+   Express Delivery for Prof. Rose Anne G. Cochanco (Ma'am Roan)
+   From: Prinz Charles M. Paderes (ITWS02)
+   ========================================================= */
+
+:root {
+  --bg-canvas: #FAF6ED;
+  --bg-parchment: #FDFBF7;
+  --bg-parchment-accent: #F4EEDB;
+  --bg-envelope: #EAE0D0;
+  --bg-envelope-dark: #D8CCA8;
+  --ink-primary: #2C2621;
+  --ink-secondary: #5C544B;
+  --ink-muted: #766D63;
+  --wax-red: #A33333;
+  --wax-dark: #661818;
+  --sage-green: #4D6B5A;
+  --sage-light: #E8F0EC;
+  --dusk-blue: #3E5B70;
+  --amber-gold: #C2873E;
+  --amber-light: #FBF4E8;
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(215, 230, 222, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(245, 230, 205, 0.45) 0%, transparent 50%);
+  background-size: 100% 100%;
+  color: var(--ink-primary);
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   Explicit Typography Scale (Ratio > 1.25x between steps)
+   h1: 40px (2.5rem)
+   h2: 28px (1.75rem)
+   h3: 21.6px (1.35rem)
+   body/p: 16px (1rem)
+   small: 12.8px (0.8rem)
+   ========================================================= */
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-primary);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.font-serif-ghibli {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-hand {
+  font-family: 'Caveat', cursive;
+}
+
+.font-mono-post {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Organic hand-crafted parchment borders */
+.parchment-border {
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 1.5px solid rgba(140, 115, 85, 0.22);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* Top Airmail Trim Border (Crisp dual-tone styling, no repeating stripes) */
+.airmail-trim {
+  height: 6px;
+  width: 100%;
+  background: var(--bg-canvas);
+  border-top: 3px solid #A33333;
+  border-bottom: 2px solid #3E5B70;
+}
+
+/* =========================================================
+   Postage Stamps (Perforated Craft)
+   ========================================================= */
+.stamp-wrapper {
+  outline: none;
+  padding: 8px 10px;
+  position: relative;
+  border: 1px dashed rgba(160, 130, 95, 0.45);
+  /* no shadow */
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.stamp-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Postal Cancellation Mark */
+.postal-cancellation {
+  border: 2px solid rgba(163, 51, 51, 0.7);
+  border-radius: 50%;
+  width: 92px;
+  height: 92px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: rotate(-12deg);
+  pointer-events: none;
+  position: relative;
+}
+
+.postal-cancellation::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(163, 51, 51, 0.5);
+  border-radius: 50%;
+}
+
+/* =========================================================
+   Interactive 3D Envelope
+   ========================================================= */
+.envelope-stage {
+  perspective: 1200px;
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.ghibli-envelope {
+  position: relative;
+  width: 100%;
+  background: var(--bg-envelope);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(150, 120, 85, 0.35);
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+/* Top Foldable Triangular Flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(180deg, #E2CEB2 0%, #D8C2A2 100%);
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.3s 0.2s;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.ghibli-envelope.is-open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+/* Front Pocket Body */
+.envelope-pocket {
+  position: relative;
+  z-index: 5;
+  padding: 36px 32px 32px 32px;
+}
+
+/* =========================================================
+   Crimson Wax Seal (The Runaway Button)
+   High contrast: Pure white icons and text on deep red
+   ========================================================= */
+button.wax-seal-btn, #runawayBtn {
+  background: radial-gradient(circle at 35% 30%, #C84646 0%, #9E2A2B 55%, #661818 100%);
+  border: 3px solid #FDFBF7;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25),
+              inset 0 2px 4px rgba(255, 255, 255, 0.4),
+              inset 0 -2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  color: #FFFFFF !important;
+  transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              left 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.2s ease;
+  will-change: top, left, transform;
+  z-index: 50;
+}
+
+button.wax-seal-btn *, #runawayBtn * {
+  color: #FFFFFF !important;
+}
+
+button.wax-seal-btn:hover, #runawayBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+button.wax-seal-btn:active, #runawayBtn:active {
+  transform: scale(0.95);
+}
+
+/* When the seal locks and is ready to click */
+button.wax-seal-btn.locked, #runawayBtn.locked {
+  background: radial-gradient(circle at 35% 30%, #34D399 0%, #059669 65%, #064E3B 100%);
+  box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.25), 0 8px 20px rgba(0, 0, 0, 0.25);
+  animation: pulseGentle 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseGentle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+/* =========================================================
+   Letter Inside & Unfolding
+   ========================================================= */
+.letter-stationery {
+  background-color: var(--bg-parchment);
+  background-image: 
+    linear-gradient(rgba(140, 115, 85, 0.04) 1px, transparent 1px);
+  background-size: 100% 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(160, 130, 95, 0.25);
+  box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  padding: 40px 36px;
+}
+
+/* Modal Inset Padding */
+.modal-parchment {
+  padding: 36px 32px;
+}
+
+/* =========================================================
+   Soot Sprites (Susuwatari)
+   ========================================================= */
+.soot-sprite {
+  width: 38px;
+  height: 38px;
+  background: #1A1A1A;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px #1A1A1A, 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  user-select: none;
+}
+
+.soot-sprite::before, .soot-sprite::after {
+  content: '';
+  position: absolute;
+  top: 11px;
+  width: 10px;
+  height: 10px;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.soot-sprite::before { left: 7px; }
+.soot-sprite::after { right: 7px; }
+
+.soot-sprite span.pupil-l, .soot-sprite span.pupil-r {
+  position: absolute;
+  top: 14px;
+  width: 4px;
+  height: 4px;
+  background: #000000;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.soot-sprite span.pupil-l { left: 10px; }
+.soot-sprite span.pupil-r { right: 10px; }
+
+.soot-sprite:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.soot-sprite.wobble {
+  animation: spriteWobble 0.4s ease-in-out;
+}
+
+@keyframes spriteWobble {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.15) rotate(-12deg); }
+  50% { transform: scale(1.15) rotate(12deg); }
+  75% { transform: scale(1.08) rotate(-6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* =========================================================
+   Floating Delivery Leaf Particles
+   ========================================================= */
+.falling-leaf {
+  position: fixed;
+  top: -20px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.65;
+  animation: leafDrift linear infinite;
+}
+
+@keyframes leafDrift {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.65;
+  }
+  85% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg) translateX(45px);
+    opacity: 0;
+  }
+}
+
+/* Blockquote in letter */
+.letter-stationery blockquote {
+  padding: 1.25rem 1.5rem !important;
+  border-left: 4px solid #C2873E;
+  background: rgba(250, 244, 232, 0.6);
+  border-radius: 0 8px 8px 0;
+}
+
+/* =========================================================
+   Print Stylesheet (Prints ONLY the clean keepsake letter)
+   ========================================================= */
+@media print {
+  @page {
+    margin: 1.5cm;
+    size: auto;
+  }
+
+  html, body {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Completely hide all interactive UI, leaves, stages, and badges */
+  header, 
+  footer, 
+  .airmail-trim, 
+  .falling-leaf, 
+  .envelope-stage, 
+  .soot-sprite, 
+  #runawayBtn, 
+  #dialogBubble, 
+  #audioBtn, 
+  #pinModal, 
+  .no-print,
+  main > div:first-child {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #letterCard {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .letter-stationery {
+    box-shadow: none !important;
+    border: 1px solid #D1C5B0 !important;
+    background: #FFFFFF !important;
+    background-image: none !important;
+    padding: 28px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .letter-stationery blockquote {
+    background: #FAF7F0 !important;
+    border-left: 4px solid #C2873E !important;
+    padding: 16px 20px !important;
+    page-break-inside: avoid !important;
+  }
+}
